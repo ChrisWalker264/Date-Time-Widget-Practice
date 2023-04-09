@@ -9,7 +9,9 @@ function formatTime(date) {
     const minutes = date.getMinutes();
     const isAm = date.getHours() < 12;
     
-    return `${hours12.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
+    return `${hours12.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
 }
 
 /**
@@ -19,12 +21,13 @@ function formatDate(date) {
     const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear}`;
+    return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
 }
 
-    setInterval(() => {
+setInterval(() => {
         const now = new Date();
 
-        timeElement.textContext = formatTime(now);
-        dateElement.textContext = formatDate(now);
+        timeElement.textContent = formatTime(now);
+        dateElement.textContent = formatDate(now);
     }, 200);
+
